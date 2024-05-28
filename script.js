@@ -47,8 +47,8 @@ function renderQuestions() {
       choiceElement.setAttribute("name", `question-${index}`);
       choiceElement.setAttribute("value", choice);
       if (savedProgress[index] === choice) {
-        choiceElement.checked = true;
-      }
+		  choiceElement.setAttribute('checked', '');
+		}
       choiceElement.addEventListener("change", () => saveProgress(index, choice));
       choiceLabel.appendChild(choiceElement);
       choiceLabel.appendChild(document.createTextNode(choice));
@@ -65,8 +65,6 @@ function saveProgress(questionIndex, selectedChoice) {
   progress[questionIndex] = selectedChoice;
   sessionStorage.setItem('progress', JSON.stringify(progress));
 }
-
-// Function to calculate and display the score
 function calculateScore() {
   const savedProgress = JSON.parse(sessionStorage.getItem('progress')) || {};
   let score = 0;
@@ -76,17 +74,9 @@ function calculateScore() {
       score++;
     }
   });
-
-  // Display the score
   const scoreElement = document.getElementById("score");
   scoreElement.textContent = `Your score is ${score} out of ${questions.length}`;
-
-  // Save the score in local storage
   localStorage.setItem('score', score);
 }
-
-// Event listener for the submit button
 document.getElementById("submit").addEventListener("click", calculateScore);
-
-// Render the questions when the page loads
 window.addEventListener("load", renderQuestions);
