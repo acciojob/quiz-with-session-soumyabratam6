@@ -76,7 +76,7 @@ function calculateScore() {
     }
   });
   const scoreElement = document.getElementById("score");
-  scoreElement.textContent = `Your score is ${score} out of ${questions.length}`;
+  scoreElement.textContent = `Your score is ${score} out of ${questions.length}.`;
   localStorage.setItem('score', score);
 }
 document.getElementById("submit").addEventListener("click", calculateScore);
