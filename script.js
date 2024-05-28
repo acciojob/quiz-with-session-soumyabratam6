@@ -47,7 +47,7 @@ function renderQuestions() {
       choiceElement.setAttribute("name", `question-${index}`);
       choiceElement.setAttribute("value", choice);
       if (savedProgress[index] === choice) {
-		  choiceElement.setAttribute('checked', '');
+		  choiceElement.setAttribute('checked', 'checked');
 		}
       choiceElement.addEventListener("change", () => saveProgress(index, choice));
       choiceLabel.appendChild(choiceElement);
@@ -64,6 +64,7 @@ function saveProgress(questionIndex, selectedChoice) {
   let progress = JSON.parse(sessionStorage.getItem('progress')) || {};
   progress[questionIndex] = selectedChoice;
   sessionStorage.setItem('progress', JSON.stringify(progress));
+  console.log(sessionStorage.getItem('progress'));
 }
 function calculateScore() {
   const savedProgress = JSON.parse(sessionStorage.getItem('progress')) || {};
