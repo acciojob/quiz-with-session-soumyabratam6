@@ -80,4 +80,5 @@ function calculateScore() {
   localStorage.setItem('score', score);
 }
 document.getElementById("submit").addEventListener("click", calculateScore);
+renderQuestions();
 window.addEventListener("load", renderQuestions);
