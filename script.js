@@ -47,7 +47,7 @@ function renderQuestions() {
       choiceElement.setAttribute("name", `question-${index}`);
       choiceElement.setAttribute("value", choice);
       if (savedProgress[index] === choice) {
-		  choiceElement.setAttribute('checked', 'checked');
+		  choiceElement.setAttribute('checked', 'true');
 		}
       choiceElement.addEventListener("change", () => saveProgress(index, choice));
       choiceLabel.appendChild(choiceElement);
